@@ -46,6 +46,7 @@ class MainActivity : ComponentActivity() {
                         type = AltBtnType.CLOCK,
                         width = 200.dp,
                         height = 70.dp,
+                        cornerRadius = 32,
                         onClick = {
                             altBtnState = AltBtnState.LOADING
                         },
