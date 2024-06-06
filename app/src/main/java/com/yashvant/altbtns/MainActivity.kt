@@ -19,7 +19,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.yashvant.altbtns.animations.AnimatingBox
 import kotlinx.coroutines.delay
 
 
@@ -60,8 +59,6 @@ class MainActivity : ComponentActivity() {
                         buttonState = altBtnState,
                         text = "Welcome to AltBtns",
                     )
-
-                    AnimatingBox()
 
                     LaunchedEffect(key1 = altBtnState) {
                         when (altBtnState) {
