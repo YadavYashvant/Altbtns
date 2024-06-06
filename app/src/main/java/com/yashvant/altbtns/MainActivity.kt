@@ -61,6 +61,8 @@ class MainActivity : ComponentActivity() {
                         text = "Welcome to AltBtns",
                     )
 
+                    AnimatingBox()
+
                     LaunchedEffect(key1 = altBtnState) {
                         when (altBtnState) {
                             AltBtnState.LOADING -> {
