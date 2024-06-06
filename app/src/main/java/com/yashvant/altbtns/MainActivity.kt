@@ -7,6 +7,8 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.ButtonDefaults
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -19,6 +21,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.yashvant.altbtns.animations.AnimatingBox
+import com.yashvant.altbtns.animations.BallCanvas
+import com.yashvant.altbtns.animations.RotateSphere
+import com.yashvant.altbtns.animations.SpinSphere
 import kotlinx.coroutines.delay
 
 
@@ -29,6 +35,7 @@ class MainActivity : ComponentActivity() {
 
             var altBtnState by remember { mutableStateOf(AltBtnState.IDLE) }
             val scope = rememberCoroutineScope()
+//            val scrollable = rememberScrollState()
 
             Box(
                 modifier = Modifier.fillMaxSize(),
@@ -37,9 +44,10 @@ class MainActivity : ComponentActivity() {
                 Column(
                     modifier = Modifier
                         .fillMaxSize()
+//                        .verticalScroll(scrollable)
                         .padding(20.dp),
                     horizontalAlignment = androidx.compose.ui.Alignment.CenterHorizontally,
-                    verticalArrangement = androidx.compose.foundation.layout.Arrangement.Center
+//                    verticalArrangement = androidx.compose.foundation.layout.Arrangement.Center
                 ) {
                     AltBtn(
                         type = AltBtnType.CLOCK,
@@ -60,6 +68,10 @@ class MainActivity : ComponentActivity() {
                         text = "Welcome to AltBtns",
                     )
 
+//                   AnimatingBox()
+//                    BallCanvas(name = "Welcome to AltBtns")
+//                    SpinSphere(ringColor = Color.Yellow, circleColor = Color.Green)
+//                    RotateSphere(ringColor = Color.Green, circleColor = Color.Yellow)
                     LaunchedEffect(key1 = altBtnState) {
                         when (altBtnState) {
                             AltBtnState.LOADING -> {

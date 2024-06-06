@@ -13,11 +13,12 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -37,37 +38,20 @@ import androidx.compose.ui.graphics.drawscope.withTransform
 import androidx.compose.ui.input.pointer.pointerInteropFilter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
-fun RotateSphere(
+fun SpinSphere(
     modifier: Modifier = Modifier,
     ringColor: Color,
     circleColor: Color,
 ) {
 
-    val angle = remember {
-        Animatable(0f)
-    }
-
-
     // button state
     val selected = remember { mutableStateOf(false) }
-    val animateRing = remember { Animatable(300f) }
-
-    val spinCount = remember { mutableStateOf(400) }
     val circleScale = animateFloatAsState(if (selected.value) 0.8f else 1.2f)
     val iconScale = animateFloatAsState(if (selected.value) 1f else 1.5f)
     val speed = remember { mutableStateOf(100) }
-
-
-    val spinAnimation: Float by animateFloatAsState(
-        targetValue = 360F,
-        animationSpec = infiniteRepeatable(
-            animation = tween(2000, easing = LinearEasing),
-        )
-    )
 
 
     // Ring rotate animation
@@ -84,31 +68,20 @@ fun RotateSphere(
         initialValue = 0f,
         targetValue = 360f,
         animationSpec = infiniteRepeatable(
-            animation = tween(animateRing.value.toInt(), easing = LinearEasing),
+            animation = tween(2000, easing = LinearEasing),
         )
     )
 
     // Ring grow animation
     val animateFloat = remember { Animatable(0f) }
-    LaunchedEffect(animateFloat, spinCount, angle) {
-
-        launch {
-            animateFloat.animateTo(
-                targetValue = 1f,
-                animationSpec = tween(durationMillis = 3000, easing = LinearEasing)
-            )
-        }
-
-//        launch {
-//            angle.animateTo(
-//                targetValue = 340f, animationSpec = infiniteRepeatable(
-//                    animation = tween(spinCount.value, easing = LinearEasing),
-//                )
-//            )
-//        }
+    LaunchedEffect(animateFloat) {
+        animateFloat.animateTo(
+            targetValue = 1f,
+            animationSpec = tween(durationMillis = 3000, easing = LinearEasing)
+        )
     }
 
-    Box(modifier = modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+    Box(modifier = modifier.wrapContentSize(), contentAlignment = Alignment.Center) {
         Box(modifier = modifier
             .scale(circleScale.value)
             .size(100.dp)
@@ -164,27 +137,58 @@ fun RotateSphere(
 
                 }
 
+
+//                rotate(strokeOne) {
+//                    drawRoundRect(
+//                        size = canvasSize / 5F,
+//                        color = Color.Red,
+//                        cornerRadius = CornerRadius(16.dp.toPx())
+//                    )
+//                }
+//
+//                rotate(strokeTwo) {
+//                    drawRoundRect(
+//                        size = canvasSize / 5F,
+//                        color = Color.Yellow,
+//                        cornerRadius = CornerRadius(16.dp.toPx())
+//                    )
+//                }
+//
+//                rotate(strokeThree) {
+//                    drawRoundRect(
+//                        size = canvasSize / 5F,
+//                        color = Color.Green,
+//                        cornerRadius = CornerRadius(16.dp.toPx())
+//                    )
+//                }
+
+//                // circle
+//                drawCircle(
+//                    color = circleColor,
+//                    center = Offset(canvasWidth / 2f, canvasHeight / 2f),
+//                    radius = canvasWidth / 2f
+//                )
+
+
             }
-            .clip(CircleShape), contentAlignment = Alignment.Center
+            .clip(RoundedCornerShape(20.dp)), contentAlignment = Alignment.Center
         ) {
 
 
             IconButton(onClick = {
-
-                // todo: add onclick listener
+                speed.value = 1000
             },
                 modifier = modifier
                     .scale(iconScale.value)
                     .fillMaxSize()
                     .background(circleColor)
                     .clip(
-                        CircleShape
+                        RoundedCornerShape(20.dp)
                     )
                     .pointerInteropFilter {
                         when (it.action) {
                             MotionEvent.ACTION_DOWN -> {
                                 selected.value = true
-                                spinCount.value = spinCount.value + 100
                             }
 
                             MotionEvent.ACTION_UP -> {
@@ -194,8 +198,6 @@ fun RotateSphere(
                         true
                     }) {
 
-                Text(text = "Spin count: ${spinCount.value}")
-
                 Icon(
                     painter = painterResource(id = com.yashvant.altbtns.R.drawable.wheel),
                     contentDescription = null,
@@ -204,6 +206,8 @@ fun RotateSphere(
                     tint = color
                 )
             }
+
+
         }
     }
 }
