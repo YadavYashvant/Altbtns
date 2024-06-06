@@ -36,6 +36,11 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
+import com.yashvant.altbtns.animations.AltBtnRepeatedAnimation
+import com.yashvant.altbtns.animations.AltBtnRepeatedDpAnimation
+import com.yashvant.altbtns.animations.altBtnAnimateFloatAsState
+import com.yashvant.altbtns.animations.altBtnAnimateIntAsState
+import com.yashvant.altbtns.animations.sizeAnimationMethod
 import com.yashvant.altbtns.utils.LAUNCH_EFFECT_KEY
 import com.yashvant.altbtns.utils.ZERO
 import com.yashvant.altbtns.utils.fifty

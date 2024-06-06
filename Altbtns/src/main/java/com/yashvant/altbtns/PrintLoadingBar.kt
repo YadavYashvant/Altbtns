@@ -12,6 +12,9 @@ import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import com.yashvant.altbtns.animations.AltBtnRepeatedAnimation
+import com.yashvant.altbtns.animations.AltBtnRepeatedDpAnimation
+import com.yashvant.altbtns.animations.AltBtnRepeatedFloatAnimation
 import com.yashvant.altbtns.utils.ZERO
 import com.yashvant.altbtns.utils.ten
 import com.yashvant.altbtns.utils.three
