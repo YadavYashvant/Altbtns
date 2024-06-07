@@ -65,7 +65,7 @@ fun StackedButton(
     ) {
         OutlinedButton(
             onClick = onClick,
-            shape = RoundedCornerShape(20.dp),
+            shape = RoundedCornerShape(12.dp),
             modifier = Modifier
                 .height(btnheight)
                 .width(btnwidth),
@@ -81,7 +81,7 @@ fun StackedButton(
                 onClick
                 isPressed = true
             },
-            shape = RoundedCornerShape(20.dp),
+            shape = RoundedCornerShape(12.dp),
             modifier = Modifier
                 .height(btnheight)
                 .width(btnwidth)
