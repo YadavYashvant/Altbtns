@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
@@ -73,9 +74,11 @@ class MainActivity : ComponentActivity() {
 
                     Spacer(modifier = Modifier.height(32.dp))
 
-                    StackedButton(onClick = { /*TODO*/ }) {
-                        Text(text = "Press Me You Doughnut")
-                    }
+                    StackedButton(
+                        onClick = { /*TODO*/ },
+                        text = "Press Me You Doughnut",
+                        modifier = Modifier.fillMaxWidth()
+                    )
 
 //                   AnimatingBox()
 //                    BallCanvas(name = "Welcome to AltBtns")
