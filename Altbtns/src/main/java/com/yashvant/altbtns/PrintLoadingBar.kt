@@ -139,5 +139,14 @@ fun PrintLoadingBar(
             )
         }
 
+        AltBtnType.STACKED -> {
+            CircularProgressIndicator(
+                modifier = Modifier
+                    .graphicsLayer(alpha = progressAlpha)
+                    .size(minHeightWidth - ten.dp),
+                color = assetColor,
+                strokeWidth = three.dp
+            )
+        }
     }
 }

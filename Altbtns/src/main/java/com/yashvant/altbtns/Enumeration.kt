@@ -5,5 +5,5 @@ enum class AltBtnState {
 }
 
 enum class AltBtnType {
-    CIRCLE, WHEEL, ZOOM_IN_OUT_CIRCLE, CLOCK, SPIRAL, CUSTOM
+    CIRCLE, WHEEL, ZOOM_IN_OUT_CIRCLE, CLOCK, SPIRAL, CUSTOM, STACKED
 }
