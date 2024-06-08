@@ -37,6 +37,7 @@ import androidx.compose.ui.graphics.drawscope.withTransform
 import androidx.compose.ui.input.pointer.pointerInteropFilter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import com.yashvant.altbtns.R
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalComposeUiApi::class)
@@ -71,13 +72,13 @@ fun RotateSphere(
 
 
     // Ring rotate animation
-    val infiniteTransition = rememberInfiniteTransition()
+    val infiniteTransition = rememberInfiniteTransition(label = "")
     val color by infiniteTransition.animateColor(
         initialValue = MaterialTheme.colors.onPrimary,
         targetValue = MaterialTheme.colors.onSecondary,
         animationSpec = infiniteRepeatable(
             animation = tween(3000, easing = LinearEasing),
-        )
+        ), label = ""
     )
 
     val rotateRing by infiniteTransition.animateFloat(
@@ -85,7 +86,7 @@ fun RotateSphere(
         targetValue = 360f,
         animationSpec = infiniteRepeatable(
             animation = tween(animateRing.value.toInt(), easing = LinearEasing),
-        )
+        ), label = ""
     )
 
     // Ring grow animation
@@ -197,7 +198,7 @@ fun RotateSphere(
                 Text(text = "Spin count: ${spinCount.value}")
 
                 Icon(
-                    painter = painterResource(id = com.yashvant.altbtns.R.drawable.wheel),
+                    painter = painterResource(id = R.drawable.fieries),
                     contentDescription = null,
                     modifier = Modifier
                         .size(64.dp, 64.dp),

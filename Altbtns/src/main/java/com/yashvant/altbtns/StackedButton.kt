@@ -1,26 +1,21 @@
 package com.yashvant.altbtns
 
-import androidx.compose.foundation.interaction.PressInteraction
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.animation.core.*
 import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material.OutlinedButton
+import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -31,8 +26,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import kotlinx.coroutines.delay
 
 @Composable
@@ -45,11 +45,18 @@ fun StackedButton(
     btnheight: Dp = 70.dp,
     shape: Shape = MaterialTheme.shapes.large,
     contentPadding: PaddingValues = ButtonDefaults.ContentPadding,
+    fgColor: Color = Color.Green,
+    bgColor: Color = Color.Yellow,
+    fontsize: TextUnit = 18.sp,
 ) {
     val interactionSource = remember { MutableInteractionSource() }
     var isPressed by remember { mutableStateOf(false) }
     val offsetX by animateDpAsState(if (isPressed) 0.dp else 8.dp, finishedListener = { isPressed = false })
     val offsetY by animateDpAsState(if (isPressed) 0.dp else 8.dp, finishedListener = { isPressed = false })
+
+    val poppinsfamily = FontFamily(
+        Font(R.font.poppins),
+    )
 
     Box(
         modifier = modifier
@@ -63,16 +70,16 @@ fun StackedButton(
                 indication = null
             )
     ) {
-        OutlinedButton(
-            onClick = onClick,
+        Surface(
+//            onClick = onClick,
             shape = RoundedCornerShape(12.dp),
             modifier = Modifier
-                .height(btnheight)
-                .width(btnwidth),
-            colors = ButtonDefaults.buttonColors(
-                backgroundColor = Color.Green
-            ),
-            border = BorderStroke(2.dp, Color.Yellow),
+                .fillMaxSize(),
+                /*.height(btnheight)
+                .width(btnwidth),*/
+            color = bgColor,
+
+            border = BorderStroke(2.dp, fgColor),
         ) {
             Text(text = "")
         }
@@ -83,14 +90,20 @@ fun StackedButton(
             },
             shape = RoundedCornerShape(12.dp),
             modifier = Modifier
-                .height(btnheight)
-                .width(btnwidth)
+                .fillMaxSize()
+                /*.height(btnheight)
+                .width(btnwidth)*/
                 .offset(x = offsetX, y = offsetY),
             colors = ButtonDefaults.buttonColors(
-                backgroundColor = Color.Yellow
+                backgroundColor = fgColor
             )
         ) {
-            Text(text = text)
+            Text(
+                text = text,
+                fontFamily = poppinsfamily,
+                fontWeight = FontWeight.Bold,
+                fontSize = fontsize,
+            )
         }
     }
 

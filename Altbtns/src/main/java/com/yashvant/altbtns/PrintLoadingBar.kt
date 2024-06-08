@@ -3,6 +3,8 @@ package com.yashvant.altbtns
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.Icon
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.DateRange
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
@@ -45,7 +47,7 @@ fun PrintLoadingBar(
         }
         AltBtnType.WHEEL -> {
             Icon(
-                painter = painterResource(id = R.drawable.wheel),
+                imageVector = Icons.Default.DateRange,
                 contentDescription = null,
                 modifier = Modifier
                     .size(minHeightWidth - ten.dp)
@@ -86,7 +88,7 @@ fun PrintLoadingBar(
         }
         AltBtnType.SPIRAL -> {
             Icon(
-                painter = painterResource(id = R.drawable.spiral),
+                imageVector = Icons.Default.DateRange,
                 contentDescription = null,
                 modifier = Modifier
                     .size(minHeightWidth - ten.dp)

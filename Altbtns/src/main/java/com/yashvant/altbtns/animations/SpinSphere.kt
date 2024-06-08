@@ -38,6 +38,7 @@ import androidx.compose.ui.graphics.drawscope.withTransform
 import androidx.compose.ui.input.pointer.pointerInteropFilter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import com.yashvant.altbtns.R
 
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
@@ -199,7 +200,7 @@ fun SpinSphere(
                     }) {
 
                 Icon(
-                    painter = painterResource(id = com.yashvant.altbtns.R.drawable.wheel),
+                    painter = painterResource(id = R.drawable.fieries),
                     contentDescription = null,
                     modifier = Modifier
                         .size(64.dp, 64.dp),

@@ -124,7 +124,7 @@ fun AltBtn(
     fontFamily: FontFamily? = null,
     fontWeight: FontWeight? = null,
     hourHandColor: Color = Color.Black,
-    customLoadingIconPainter: Painter = painterResource(id = R.drawable.simform_logo),
+    customLoadingIconPainter: Painter = painterResource(id = R.drawable.fieries),
     customLoadingEffect: AltBtnCustomLoading = AltBtnCustomLoading(
         rotation = false,
         zoomInOut = false,

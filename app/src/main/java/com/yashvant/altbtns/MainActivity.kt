@@ -10,10 +10,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.ButtonDefaults
-import androidx.compose.material.Text
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -25,10 +22,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.yashvant.altbtns.animations.AnimatingBox
-import com.yashvant.altbtns.animations.BallCanvas
-import com.yashvant.altbtns.animations.RotateSphere
-import com.yashvant.altbtns.animations.SpinSphere
 import kotlinx.coroutines.delay
 
 
@@ -76,8 +69,8 @@ class MainActivity : ComponentActivity() {
 
                     StackedButton(
                         onClick = { /*TODO*/ },
-                        text = "Press Me You Doughnut",
-                        modifier = Modifier.fillMaxWidth()
+                        modifier = Modifier.fillMaxWidth(),
+                        text = "Stacked Button",
                     )
 
 //                   AnimatingBox()
