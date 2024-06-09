@@ -56,7 +56,7 @@ fun AnimatingBox(
         targetValue = transitionData.sweep,
         animationSpec = infiniteRepeatable(
             animation = tween(transitionData.speed, easing = LinearEasing)
-        )
+        ), label = ""
     )
 
     Box(
