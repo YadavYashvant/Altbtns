@@ -3,6 +3,7 @@ package com.yashvant.altbtns
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -111,8 +112,10 @@ class MainActivity : ComponentActivity() {
 fun PreviewAltBtn() {
     Button(
         onClick = { /*TODO*/ },
-        shape = RoundedCornerShape(0)
+        shape = RoundedCornerShape(0),
+        colors = ButtonDefaults.buttonColors(backgroundColor = Color.Green),
+        border = BorderStroke(2.dp, Color.Yellow)
     ) {
-        Text(text = "ZCornerButton")
+        Text(text = "ZCornerButton", fontWeight = FontWeight.Bold)
     }
 }
