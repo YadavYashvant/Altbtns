@@ -79,6 +79,12 @@ class MainActivity : ComponentActivity() {
                         text = "Stacked Button",
                     )
 
+                    Spacer(modifier = Modifier.height(32.dp))
+
+                    ZCornerButton(
+                        modifier = Modifier.fillMaxWidth(),
+                    )
+
 //                   AnimatingBox()
 //                    BallCanvas(name = "Welcome to AltBtns")
 //                    SpinSphere(ringColor = Color.Yellow, circleColor = Color.Green)
