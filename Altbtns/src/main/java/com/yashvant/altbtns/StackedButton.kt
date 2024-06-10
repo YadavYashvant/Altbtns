@@ -26,6 +26,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
@@ -53,6 +54,7 @@ fun StackedButton(
     var isPressed by remember { mutableStateOf(false) }
     val offsetX by animateDpAsState(if (isPressed) 0.dp else 8.dp, finishedListener = { isPressed = false })
     val offsetY by animateDpAsState(if (isPressed) 0.dp else 8.dp, finishedListener = { isPressed = false })
+    val configuration = LocalConfiguration.current
 
     val poppinsfamily = FontFamily(
         Font(R.font.poppins),
@@ -74,9 +76,9 @@ fun StackedButton(
 //            onClick = onClick,
             shape = RoundedCornerShape(12.dp),
             modifier = Modifier
-                .fillMaxSize(),
-                /*.height(btnheight)
-                .width(btnwidth),*/
+//                .fillMaxSize()
+                .height(btnheight)
+                .width(btnwidth),
             color = bgColor,
 
             border = BorderStroke(2.dp, fgColor),
@@ -90,9 +92,9 @@ fun StackedButton(
             },
             shape = RoundedCornerShape(12.dp),
             modifier = Modifier
-                .fillMaxSize()
-                /*.height(btnheight)
-                .width(btnwidth)*/
+//                .fillMaxSize()
+                .height(btnheight)
+                .width(btnwidth)
                 .offset(x = offsetX, y = offsetY),
             colors = ButtonDefaults.buttonColors(
                 backgroundColor = fgColor

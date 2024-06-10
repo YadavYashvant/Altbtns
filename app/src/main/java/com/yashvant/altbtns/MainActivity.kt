@@ -75,7 +75,7 @@ class MainActivity : ComponentActivity() {
 
                     StackedButton(
                         onClick = { /*TODO*/ },
-                        modifier = Modifier.fillMaxWidth(),
+//                        modifier = Modifier.fillMaxWidth(),
                         text = "Stacked Button",
                     )
 
@@ -83,7 +83,12 @@ class MainActivity : ComponentActivity() {
 
                     ZCornerButton(
                         modifier = Modifier.fillMaxWidth(),
+                        btnText = "ZCornerButton",
                     )
+
+                    Spacer(modifier = Modifier.height(32.dp))
+
+                    SplitFadeButton(onClick = { /*TODO*/ }, text = "SplitFadeButton")
 
 //                   AnimatingBox()
 //                    BallCanvas(name = "Welcome to AltBtns")
