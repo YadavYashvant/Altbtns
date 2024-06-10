@@ -117,16 +117,3 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
-
-@Preview
-@Composable
-fun PreviewAltBtn() {
-    Button(
-        onClick = { /*TODO*/ },
-        shape = RoundedCornerShape(0),
-        colors = ButtonDefaults.buttonColors(backgroundColor = Color.Green),
-        border = BorderStroke(2.dp, Color.Yellow)
-    ) {
-        Text(text = "ZCornerButton", fontWeight = FontWeight.Bold)
-    }
-}
