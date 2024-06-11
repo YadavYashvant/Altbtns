@@ -1,5 +1,7 @@
 package com.yashvant.altbtns
 
+import android.nfc.Tag
+import android.util.Log
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.animateFloatAsState
@@ -13,8 +15,11 @@ import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
+import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.Divider
+import androidx.compose.material.LinearProgressIndicator
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -27,6 +32,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.delay
 
@@ -43,20 +49,32 @@ fun SplitFadeButton(
     var isClicked by remember { mutableStateOf(false) }
     val offsetX by animateDpAsState(if (isClicked) 50.dp else 0.dp)
     val opacity by animateFloatAsState(if (isClicked) 0f else 1f)
+    var progress by remember { mutableStateOf(0f) }
+
+    LaunchedEffect(isClicked) {
+        while (progress < 1f){
+            delay(125)
+            progress += 0.1f
+        }
+    }
 
     Box(
-        modifier = modifier.clickable(
-            interactionSource = interactionSource,
-            indication = null,
-            enabled = enabled,
+        modifier = modifier
+            .clickable(
+                interactionSource = interactionSource,
+                indication = null,
+                enabled = enabled,
+                onClick = {}
+            )
+            .height(70.dp)
+            .width(200.dp),
+    ) {
+        Button(
             onClick = {
                 isClicked = true
                 onClick()
-            }
-        )
-    ) {
-        Button(
-            onClick = {},
+                Log.d("SplitFade", "isClicked: $isClicked")
+            },
             modifier = Modifier
                 .height(70.dp)
                 .width(200.dp),
@@ -68,25 +86,39 @@ fun SplitFadeButton(
                 backgroundColor = Color.Green
             )
         ) {
-            Text(text = text.substring(0, text.length / 2))
-        }
-            AnimatedVisibility(visible = isClicked) {
-                Divider(
+            AnimatedVisibility(isClicked) {
+                Surface(
                     modifier = Modifier
-                        .align(Alignment.Center)
-                        /*.offset(x = offsetX)
-                        .alpha(1 - opacity)*/
+//                        .align(Alignment.Center)
+                        .width(200.dp)
+                        .height(70.dp)
+                        .weight(0.5f)
+                    /*.offset(x = offsetX)
+                    .alpha(1 - opacity)*/
                     ,
-                    thickness = 5.dp,
-                    color = Color.White
-                )
+//                    thickness = 5.dp,
+                    color = MaterialTheme.colors.background
+                ){
+                    LinearProgressIndicator(
+                        progress = progress,
+                        color = Color.Green,
+                        backgroundColor = Color.Yellow,
+                        modifier = Modifier
+                            .height(70.dp)
+//                            .width(200.dp)
+
+                    )
+                }
             }
+            Text(text = text)
+        }
     }
 
     LaunchedEffect(isClicked) {
         if (isClicked) {
             delay(1000)
             isClicked = false
+            progress = 0f
         }
     }
 }
