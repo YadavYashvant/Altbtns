@@ -1,14 +1,17 @@
 package com.yashvant.altbtns
 
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.offset
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
+import androidx.compose.material.Divider
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -19,6 +22,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.delay
@@ -29,7 +33,7 @@ fun SplitFadeButton(
     modifier: Modifier = Modifier,
     text: String,
     enabled: Boolean = true,
-    shape: Shape = MaterialTheme.shapes.small,
+    shape: Shape = MaterialTheme.shapes.large,
     contentPadding: PaddingValues = ButtonDefaults.ContentPadding,
 ) {
     val interactionSource = remember { MutableInteractionSource() }
@@ -37,7 +41,7 @@ fun SplitFadeButton(
     val offsetX by animateDpAsState(if (isClicked) 50.dp else 0.dp)
     val opacity by animateFloatAsState(if (isClicked) 0f else 1f)
 
-    Row(
+    Box(
         modifier = modifier.clickable(
             interactionSource = interactionSource,
             indication = null,
@@ -51,26 +55,26 @@ fun SplitFadeButton(
         Button(
             onClick = {},
             modifier = Modifier
-                .weight(1f)
                 .offset(x = -offsetX)
                 .alpha(opacity),
             shape = shape,
-            enabled = enabled
+            enabled = enabled,
+            colors = ButtonDefaults.buttonColors(
+                backgroundColor = Color.Green
+            )
         ) {
             Text(text = text.substring(0, text.length / 2))
         }
-
-        Button(
-            onClick = {},
-            modifier = Modifier
-                .weight(1f)
-                .offset(x = offsetX)
-                .alpha(opacity),
-            shape = shape,
-            enabled = enabled
-        ) {
-            Text(text = text.substring(text.length / 2))
-        }
+            AnimatedVisibility(visible = isClicked) {
+                Divider(
+                    modifier = Modifier
+                        .offset(x = offsetX)
+                        .alpha(1 - opacity)
+                    ,
+                    thickness = 5.dp,
+                    color = Color.White
+                )
+            }
     }
 
     LaunchedEffect(isClicked) {
