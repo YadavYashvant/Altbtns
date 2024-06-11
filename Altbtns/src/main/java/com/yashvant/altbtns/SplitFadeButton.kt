@@ -101,8 +101,8 @@ fun SplitFadeButton(
                 ){
                     LinearProgressIndicator(
                         progress = progress,
-                        color = Color.Green,
-                        backgroundColor = Color.Yellow,
+                        color = Color.Yellow,
+                        backgroundColor = Color.Green,
                         modifier = Modifier
                             .height(70.dp)
 //                            .width(200.dp)
