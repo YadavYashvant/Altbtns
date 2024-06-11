@@ -8,7 +8,9 @@ import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
+import androidx.compose.foundation.layout.width
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Divider
@@ -20,6 +22,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
@@ -55,8 +58,10 @@ fun SplitFadeButton(
         Button(
             onClick = {},
             modifier = Modifier
-                .offset(x = -offsetX)
-                .alpha(opacity),
+                .height(70.dp)
+                .width(200.dp),
+                /*.offset(x = -offsetX)
+                .alpha(opacity),*/
             shape = shape,
             enabled = enabled,
             colors = ButtonDefaults.buttonColors(
@@ -68,8 +73,9 @@ fun SplitFadeButton(
             AnimatedVisibility(visible = isClicked) {
                 Divider(
                     modifier = Modifier
-                        .offset(x = offsetX)
-                        .alpha(1 - opacity)
+                        .align(Alignment.Center)
+                        /*.offset(x = offsetX)
+                        .alpha(1 - opacity)*/
                     ,
                     thickness = 5.dp,
                     color = Color.White
