@@ -20,7 +20,8 @@ fun ZCornerButton(
         onClick = { /*TODO*/ },
         shape = RoundedCornerShape(0),
         colors = ButtonDefaults.buttonColors(backgroundColor = Color.Green),
-        border = BorderStroke(3.dp, Color.Yellow)
+        border = BorderStroke(3.dp, Color.Yellow),
+        modifier = modifier
     ) {
         Text(text = btnText)
     }
