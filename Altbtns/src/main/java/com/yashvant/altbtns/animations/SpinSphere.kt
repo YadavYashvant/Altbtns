@@ -134,43 +134,7 @@ fun SpinSphere(
                         size = canvasSize / 1f,
                         style = Stroke(100f, cap = StrokeCap.Round, join = StrokeJoin.Round),
                     )
-
-
                 }
-
-
-//                rotate(strokeOne) {
-//                    drawRoundRect(
-//                        size = canvasSize / 5F,
-//                        color = Color.Red,
-//                        cornerRadius = CornerRadius(16.dp.toPx())
-//                    )
-//                }
-//
-//                rotate(strokeTwo) {
-//                    drawRoundRect(
-//                        size = canvasSize / 5F,
-//                        color = Color.Yellow,
-//                        cornerRadius = CornerRadius(16.dp.toPx())
-//                    )
-//                }
-//
-//                rotate(strokeThree) {
-//                    drawRoundRect(
-//                        size = canvasSize / 5F,
-//                        color = Color.Green,
-//                        cornerRadius = CornerRadius(16.dp.toPx())
-//                    )
-//                }
-
-//                // circle
-//                drawCircle(
-//                    color = circleColor,
-//                    center = Offset(canvasWidth / 2f, canvasHeight / 2f),
-//                    radius = canvasWidth / 2f
-//                )
-
-
             }
             .clip(RoundedCornerShape(20.dp)), contentAlignment = Alignment.Center
         ) {
