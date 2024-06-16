@@ -207,8 +207,6 @@ fun SpinSphere(
                     tint = color
                 )
             }
-
-
         }
     }
 }

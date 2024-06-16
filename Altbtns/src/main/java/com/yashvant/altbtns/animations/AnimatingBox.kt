@@ -74,11 +74,8 @@ fun AnimatingBox(
                         )
 
                 }
-
-
             }, contentAlignment = Alignment.Center
     ) {
-
         Column(modifier = modifier.fillMaxWidth()) {
             Button(onClick = {
                 box.value = if (box.value == BoxState.IDLE) BoxState.SPINNING else BoxState.IDLE
