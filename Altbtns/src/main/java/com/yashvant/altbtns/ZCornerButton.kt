@@ -11,13 +11,17 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun ZCornerButton(modifier: Modifier = Modifier, btnText: String, onClick: () -> Unit) {
+fun ZCornerButton(modifier: Modifier = Modifier,
+                  btnText: String,
+                  onClick: () -> Unit,
+                  borderColor: Color = Color.Yellow,
+) {
 
     Button(
             onClick = { onClick() },
             shape = RoundedCornerShape(0),
             colors = ButtonDefaults.buttonColors(backgroundColor = Color.Green),
-            border = BorderStroke(3.dp, Color.Yellow),
+            border = BorderStroke(3.dp, borderColor),
             modifier = modifier
     ) { Text(text = btnText) }
 }
