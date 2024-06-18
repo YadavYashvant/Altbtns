@@ -24,6 +24,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -47,9 +48,9 @@ fun SplitFadeButton(
 ) {
     val interactionSource = remember { MutableInteractionSource() }
     var isClicked by remember { mutableStateOf(false) }
-    val offsetX by animateDpAsState(if (isClicked) 50.dp else 0.dp)
-    val opacity by animateFloatAsState(if (isClicked) 0f else 1f)
-    var progress by remember { mutableStateOf(0f) }
+    val offsetX by animateDpAsState(if (isClicked) 50.dp else 0.dp, label = "")
+    val opacity by animateFloatAsState(if (isClicked) 0f else 1f, label = "")
+    var progress by remember { mutableFloatStateOf(0f) }
 
     LaunchedEffect(isClicked) {
         while (progress < 1f){
@@ -78,8 +79,6 @@ fun SplitFadeButton(
             modifier = Modifier
                 .height(70.dp)
                 .width(200.dp),
-                /*.offset(x = -offsetX)
-                .alpha(opacity),*/
             shape = shape,
             enabled = enabled,
             colors = ButtonDefaults.buttonColors(
@@ -89,14 +88,9 @@ fun SplitFadeButton(
             AnimatedVisibility(isClicked) {
                 Surface(
                     modifier = Modifier
-//                        .align(Alignment.Center)
                         .width(200.dp)
                         .height(70.dp)
-                        .weight(0.5f)
-                    /*.offset(x = offsetX)
-                    .alpha(1 - opacity)*/
-                    ,
-//                    thickness = 5.dp,
+                        .weight(0.5f),
                     color = MaterialTheme.colors.background
                 ){
                     LinearProgressIndicator(

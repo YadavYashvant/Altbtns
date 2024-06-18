@@ -88,11 +88,10 @@ fun SpinSphere(
             .scale(circleScale.value)
             .size(100.dp)
             .drawBehind {
-                // canvas measurement
+
                 val canvasSize = size
                 val canvasWidth = size.width
                 val canvasHeight = size.height
-
 
                 withTransform({
                     rotate(degrees = rotateRing)
@@ -116,7 +115,6 @@ fun SpinSphere(
                         style = Stroke(100f, cap = StrokeCap.Round, join = StrokeJoin.Round),
                     )
 
-
                     drawArc(
                         color = color,
                         startAngle = 180f,
@@ -139,7 +137,6 @@ fun SpinSphere(
             }
             .clip(RoundedCornerShape(20.dp)), contentAlignment = Alignment.Center
         ) {
-
 
             IconButton(onClick = {
                 speed.intValue = 1000
