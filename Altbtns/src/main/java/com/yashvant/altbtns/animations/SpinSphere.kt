@@ -22,6 +22,7 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -50,19 +51,19 @@ fun SpinSphere(
 
     // button state
     val selected = remember { mutableStateOf(false) }
-    val circleScale = animateFloatAsState(if (selected.value) 0.8f else 1.2f)
-    val iconScale = animateFloatAsState(if (selected.value) 1f else 1.5f)
-    val speed = remember { mutableStateOf(100) }
+    val circleScale = animateFloatAsState(if (selected.value) 0.8f else 1.2f, label = "")
+    val iconScale = animateFloatAsState(if (selected.value) 1f else 1.5f, label = "")
+    val speed = remember { mutableIntStateOf(100) }
 
 
     // Ring rotate animation
-    val infiniteTransition = rememberInfiniteTransition()
+    val infiniteTransition = rememberInfiniteTransition(label = "")
     val color by infiniteTransition.animateColor(
         initialValue = MaterialTheme.colors.onPrimary,
         targetValue = MaterialTheme.colors.onSecondary,
         animationSpec = infiniteRepeatable(
             animation = tween(3000, easing = LinearEasing),
-        )
+        ), label = ""
     )
 
     val rotateRing by infiniteTransition.animateFloat(
@@ -70,7 +71,7 @@ fun SpinSphere(
         targetValue = 360f,
         animationSpec = infiniteRepeatable(
             animation = tween(2000, easing = LinearEasing),
-        )
+        ), label = ""
     )
 
     // Ring grow animation
@@ -141,7 +142,7 @@ fun SpinSphere(
 
 
             IconButton(onClick = {
-                speed.value = 1000
+                speed.intValue = 1000
             },
                 modifier = modifier
                     .scale(iconScale.value)

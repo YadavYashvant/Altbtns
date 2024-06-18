@@ -16,12 +16,13 @@ fun ZCornerButton(modifier: Modifier = Modifier,
                   onClick: () -> Unit,
                   borderColor: Color = Color.Yellow,
 ) {
-
     Button(
             onClick = { onClick() },
             shape = RoundedCornerShape(0),
             colors = ButtonDefaults.buttonColors(backgroundColor = Color.Green),
             border = BorderStroke(3.dp, borderColor),
             modifier = modifier
-    ) { Text(text = btnText) }
+    ) {
+        Text(text = btnText)
+    }
 }
